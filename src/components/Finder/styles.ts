@@ -18,10 +18,18 @@ export const FinderContainer = styled.div`
 
 export const FinderArea = styled.div`
   height: 100%;
-  /* width: 100%; */
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 0px 10px 10px 0px;
+`
+
+export const FinderContent = styled.div`
+  //height: calc(100% - 49px);
+  height: 560px;
+  border-radius: 0px 0px 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
 `
 
 export const FinderSide = styled.div`

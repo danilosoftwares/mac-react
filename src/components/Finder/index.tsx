@@ -10,8 +10,11 @@ import {
   FinderLabelGroup,
   FinderIconLabelGroup,
   FinderGroupLine,
+  FinderContent,
 } from './styles';
 import folder_label from './icon_finder_label.svg';
+import { Header } from "./Header";
+import { Item } from "./Item";
 
 
 export const Finder: React.FC = () => {
@@ -42,7 +45,29 @@ export const Finder: React.FC = () => {
         {createGroup("Favorites", ["Desktop", "Downlaods", "Recents", "Documents"])}
         {createGroup("iCloud", ["iCloud Drive", "Documents", "Desktop"])}
       </FinderSide>
-      <FinderArea></FinderArea>
+      <FinderArea>
+        <Header></Header>
+        <FinderContent>
+          <Item label={"Fotos de Verão"} icon="png"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+          <Item label={"Receita de bolo"} icon="text"></Item>
+        </FinderContent>
+      </FinderArea>
     </FinderContainer>
   );
 };

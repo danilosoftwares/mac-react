@@ -56,7 +56,7 @@ export const MenuMac: React.FC<MenuLeftItensProps> = ({ data, ...attr }) => {
           <NavUnordList>
             {data.left.map((value, index) => {
               return (
-                <NavListItem>
+                <NavListItem key={index}>
                   {value.label ? <NavLabel>{value.label}</NavLabel> : value.image ? <AppleImage src={value.image} alt="logo" /> : null}
                   {value.child ? <NavUnordListSub> <div>  {getChild(value.child)} </div></NavUnordListSub> : null}
                 </NavListItem>)
@@ -69,7 +69,7 @@ export const MenuMac: React.FC<MenuLeftItensProps> = ({ data, ...attr }) => {
           <NavUnordList>
             {data.right.map((value, index) => {
               return (
-                <NavListItem>
+                <NavListItem key={index}>
                   {value.label ? <NavLabel>{value.label}</NavLabel> : value.image ? <AppleImage src={value.image} alt="logo" /> : null}
                   {value.child ? <NavUnordListSub> <div>  {getChild(value.child)} </div></NavUnordListSub> : null}
                 </NavListItem>)
