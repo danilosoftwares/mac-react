@@ -2,10 +2,15 @@ import styled from "styled-components";
 import { prosFinderGroupLine } from ".";
 import { theme } from "../../types";
 
-export const FinderContainer = styled.div`
+interface propsFinderContainer {
+  left: number;
+  top: number;
+}
+
+export const FinderContainer = styled.div<propsFinderContainer>`
   position: absolute;
-  left: 25%;
-  top: 50px;
+  left: ${props => props.left + "px"};
+  top: ${props => props.top + "px"};
   height: 620px;
   width: 800px;
 

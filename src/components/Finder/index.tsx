@@ -19,7 +19,7 @@ import button_yellow from './button_yellow.svg';
 import button_green from './button_green.svg';
 import { Header } from "./Header";
 import { Item } from "./Item";
-import { loadList } from '../../data/folders.js';
+import { loadList } from "../../data/folders";
 
 interface propsFinderContentItem {
   label: string;
@@ -43,8 +43,12 @@ export interface prosFinderGroupLine {
   items?: Array<propsFinderContentItem>
 }
 
+interface propsFinder {
+  left: number;
+  top: number;
+}
 
-export const Finder: React.FC = () => {
+export const Finder: React.FC<propsFinder> = ({ left, top }) => {
 
   const [listFiles, setListFiles] = useState<propsGroup[]>(loadList());
 
@@ -103,7 +107,7 @@ export const Finder: React.FC = () => {
   }
 
   return (
-    <FinderContainer>
+    <FinderContainer key={getNumber()} left={left} top={top}>
       <FinderSide>
         <FinderCloseBar>
           <FinderCircle color={"red"}><FinderIconButtonCircle src={button_red} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
