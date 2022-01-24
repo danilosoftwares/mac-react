@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { prosFinderGroupLine } from ".";
+import { theme } from "../../types";
 
 export const FinderContainer = styled.div`
   position: absolute;
@@ -24,8 +26,8 @@ export const FinderArea = styled.div`
 `
 
 export const FinderContent = styled.div`
-  //height: calc(100% - 49px);
-  height: 560px;
+  max-height: 560px;
+  height: max-content;
   border-radius: 0px 0px 10px 0px;
   display: flex;
   flex-wrap: wrap;
@@ -51,19 +53,37 @@ export const FinderCloseBar = styled.div`
   display: grid;
   grid-template-columns: 15px 15px 15px;
   gap: 8px;
+
+  :hover > div > img {
+      visibility: visible; 
+  }
 `
 
 interface ButtonCloseProps {
-  color: | "red" | "yellow" | "green";
+  color: string;
 }
 
-export const FinderButtonsClose = styled.div<ButtonCloseProps>`
+export const FinderCircle = styled.div<ButtonCloseProps>`
   height: 12px;
   width: 12px;
-  background: ${props => props.color === "red" ? "#EC6A5E" : props.color === "green" ? "#61C554" : "#F5BF4F"} ;
+  background: ${props =>
+    props.color === "red" ? theme.color.red :
+      props.color === "green" ? theme.color.green :
+        props.color === "orange" ? theme.color.orange :
+          props.color === "purple" ? theme.color.purple :
+            props.color === "blue" ? theme.color.blue :
+              theme.color.yellow} ;
   border: 0.5px solid rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+
+  :hover > img {
+      visibility: visible; 
+  }
+  
 `
 
 export const FinderGroupFolders = styled.div`
@@ -89,11 +109,19 @@ export const FinderLabelGroupFolders = styled.label`
   color: rgba(60, 60, 67, 0.4);
   margin-bottom: 2px;
 `
-export const FinderGroupLine = styled.div`
+
+
+export const FinderGroupLine = styled.div<prosFinderGroupLine>`
   display: flex;
   flex-direction: row;
   align-items: center;
   column-gap: 8px;
+  border-radius: 7px;
+  width: 170px;
+  padding: 0px 10px 0px 10px;
+  background-color: ${props => props.selected ? "rgba(0, 0, 0, 0.1)" : "none"};
+  cursor: pointer;
+
 `
 
 export const FinderLabelGroup = styled.label`
@@ -106,9 +134,16 @@ export const FinderLabelGroup = styled.label`
   color: #434343;
   margin-top: 6px;
   margin-bottom: 6px;
+  cursor: pointer;
 `
 
 export const FinderIconLabelGroup = styled.img`
   height: 16px;
   width: 16px;
+  cursor: pointer;
+`
+export const FinderIconButtonCircle = styled.img`
+  height: 10px;
+  width: 10px;
+  visibility: hidden; 
 `

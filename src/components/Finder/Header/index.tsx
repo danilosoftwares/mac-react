@@ -12,8 +12,11 @@ import tag_icon_files from './icons/tag_icon_files.svg';
 import doble_arrow_files from './icons/doble_arrow_files.svg';
 import search_icon_files from './icons/search_icon_files.svg';
 
+interface propsHeader {
+  label?: string;
+}
 
-export const Header: React.FC = () => {
+export const Header: React.FC<propsHeader> = ({ label }) => {
   return (
     <Container>
       <SubContainer>
@@ -22,7 +25,7 @@ export const Header: React.FC = () => {
           <img src={arrow_right_header} alt="icon"></img>
         </PriorNextContainer>
         <LabelFolderContainer>
-          <LabelFolder>{"Recente"}</LabelFolder>
+          <LabelFolder>{label}</LabelFolder>
         </LabelFolderContainer>
         <FormatFilesContainer>
           <img src={format_icon_files} alt="icon"></img>

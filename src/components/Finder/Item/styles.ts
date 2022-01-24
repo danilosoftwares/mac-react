@@ -7,12 +7,32 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 20px;
+  padding: 5px;
+  
+  :hover {
+    > div {
+      background-color: #e3e1e3;
+    }
+    > label {
+      background-color: #0063b2;
+      border-radius: 5px;
+      color: white;  
+    }
+  }
 `
 
-export const ImageContainer = styled.img`
-  height: 48px;
-  width: 35px;
+export const ContainerImage = styled.div`
+  height: 70px;
+  width: 80px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+`
+
+export const Imaging = styled.img`
+
 `
 
 export const LabelFile = styled.label`
@@ -22,4 +42,5 @@ export const LabelFile = styled.label`
   font-size: 11px;
   line-height: 14px;
   color: #000000;
+  padding: 1px 3px 1px 3px;
 `

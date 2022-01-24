@@ -41,8 +41,8 @@ export const MenuMac: React.FC<MenuLeftItensProps> = ({ data, ...attr }) => {
   const getChild = (child: objMenu[]) => {
     return child.map((value, index) => {
       return (value.label === "-" ?
-        <NavListItemSubSeparete><div></div></NavListItemSubSeparete> :
-        <NavListItemSub><NavLabelSub>{value.label} </NavLabelSub>
+        <NavListItemSubSeparete key={index}><div></div></NavListItemSubSeparete> :
+        <NavListItemSub key={index}><NavLabelSub>{value.label} </NavLabelSub>
           {value.child ? <ImageChild><Logo fill="black" /></ImageChild> : value.shortcut ? <DivShortCut><NavLabelSubShortCut>{value.shortcut} </NavLabelSubShortCut></DivShortCut> : null}
           {value.child ? <NavUnordListSubLast> <div>  {getChild(value.child)} </div></NavUnordListSubLast> : null}
         </NavListItemSub>)
