@@ -21,6 +21,8 @@ export const FinderContainer = styled.div<propsFinderContainer>`
 
   display: grid;
   grid-template-columns: 234px 566px;
+
+  user-select: none;
 `
 
 export const FinderArea = styled.div`

@@ -5,14 +5,27 @@ import { Dock, DockItem } from './components/DockContainer';
 import './App.css';
 import { menu } from './data/menu';
 import { Desktop } from './components/Desktop';
+import { useDrag } from "@use-gesture/react"
+import { Finder } from './components/Finder';
 
 function App() {
+  const [posLogo, setLogo] = useState({ x: 0, y: 50 });
   const [list, setList] = useState<Array<number>>([]);
+  const bindLogo = useDrag((params) => {
+    setLogo({ x: params.offset[0], y: params.offset[1], });
+  });
 
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
 
+      {/* <div {...bindLogo()} style={{
+        position: "absolute",
+        top: posLogo.y,
+        left: posLogo.x,
+      }} >
+        <Finder left={10} top={50} />
+      </div> */}
 
       <MenuMac data={menu} />
       <Desktop finders={list}></Desktop>

@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Finder } from "../Finder";
 import {
   Container,
 } from './styles';
-
 interface propsDesktop {
   finders: Array<number>
 }
 
 export const Desktop: React.FC<propsDesktop> = ({ finders }) => {
+
   return (
     <Container>
       {finders.map((item, index) => {

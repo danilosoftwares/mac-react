@@ -20,7 +20,8 @@ import button_green from './button_green.svg';
 import { Header } from "./Header";
 import { Item } from "./Item";
 import { loadList } from "../../data/folders";
-
+import { useDrag } from "@use-gesture/react";
+import { idText } from "typescript";
 interface propsFinderContentItem {
   label: string;
   icon: string;
@@ -49,6 +50,17 @@ interface propsFinder {
 }
 
 export const Finder: React.FC<propsFinder> = ({ left, top }) => {
+  const [posLogo, setLogo] = useState({ x: 0, y: 50 });
+  const [canMove, setCanMove] = useState(false);
+  const [idx, setIDX] = useState(99999);
+
+  const bindLogo = useDrag((params) => {
+    params.event.preventDefault();
+    if (canMove) {
+      setIDX(idx + 9999);
+      setLogo({ x: params.offset[0], y: params.offset[1], });
+    }
+  });
 
   const [listFiles, setListFiles] = useState<propsGroup[]>(loadList());
 
@@ -107,9 +119,10 @@ export const Finder: React.FC<propsFinder> = ({ left, top }) => {
   }
 
   return (
-    <FinderContainer key={getNumber()} left={left} top={top}>
+
+    <FinderContainer {...bindLogo()} key={getNumber()} left={posLogo.x} top={posLogo.y}>
       <FinderSide>
-        <FinderCloseBar>
+        <FinderCloseBar onMouseMove={(e) => setCanMove(true)} onMouseLeave={(e) => setCanMove(false)} >
           <FinderCircle color={"red"}><FinderIconButtonCircle src={button_red} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
           <FinderCircle color={"yellow"}><FinderIconButtonCircle src={button_yellow} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
           <FinderCircle color={"green"}><FinderIconButtonCircle src={button_green} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
@@ -120,5 +133,6 @@ export const Finder: React.FC<propsFinder> = ({ left, top }) => {
         {readDataFilesOfGroup()}
       </FinderArea>
     </FinderContainer>
+
   );
 };
