@@ -21,22 +21,10 @@ import { Header } from "./Header";
 import { Item } from "./Item";
 import { loadList } from "../../data/folders";
 import { useDrag } from "@use-gesture/react";
-import { idText } from "typescript";
-interface propsFinderContentItem {
-  label: string;
-  icon: string;
-}
-interface propsItemGroup {
-  label?: string;
-  selected?: boolean;
-  color?: string;
-  items?: Array<propsFinderContentItem>
-}
+import { propsFinderContentItem, propsGroup, propsItemGroup } from "../../store/types";
+import { useDispatch } from "react-redux";
+import { decrement } from "../../store/store";
 
-interface propsGroup {
-  label?: string;
-  items?: Array<propsItemGroup>
-}
 export interface prosFinderGroupLine {
   label?: string;
   selected?: boolean;
@@ -47,18 +35,29 @@ export interface prosFinderGroupLine {
 interface propsFinder {
   left: number;
   top: number;
+  id: number;
 }
 
-export const Finder: React.FC<propsFinder> = ({ left, top }) => {
+export const Finder: React.FC<propsFinder> = ({ id, left, top }) => {
   const [posLogo, setLogo] = useState({ x: 0, y: 50 });
   const [canMove, setCanMove] = useState(false);
+  const [canDelete, setCanDelete] = useState(false);
   const [idx, setIDX] = useState(99999);
+  const [identificador, setIdentificador] = useState<number>(id);
+  const dispatch = useDispatch();
 
   const bindLogo = useDrag((params) => {
     params.event.preventDefault();
     if (canMove) {
-      setIDX(idx + 9999);
-      setLogo({ x: params.offset[0], y: params.offset[1], });
+      const novo = { x: Math.trunc(params.offset[0]), y: Math.trunc(params.offset[1] + 50), };
+      if (novo !== posLogo) {
+        setIDX(idx + 9999);
+        setLogo(novo);
+      }
+    }
+    if (canDelete) {
+      setCanDelete(false);
+      dispatch(decrement(identificador));
     }
   });
 
@@ -69,11 +68,11 @@ export const Finder: React.FC<propsFinder> = ({ left, top }) => {
     return x;
   }
 
-  const createGroup = (index: number, title?: string, list?: Array<prosFinderGroupLine>) => {
+  const createGroup = (index: number, title?: string, list?: Array<propsItemGroup>) => {
     return <FinderGroupFolders key={index}><FinderLabelGroupFolders key={index} >{title}</FinderLabelGroupFolders> {createGroupList(title, list)}</FinderGroupFolders>
   }
 
-  const createGroupList = (title?: string, list?: Array<prosFinderGroupLine>) => {
+  const createGroupList = (title?: string, list?: Array<propsItemGroup>) => {
     return list?.map((item, index) => {
       return (
         <FinderGroupLine key={index} selected={item.selected} onClick={(e) => clickGroup(title, item.label)}>
@@ -120,10 +119,10 @@ export const Finder: React.FC<propsFinder> = ({ left, top }) => {
 
   return (
 
-    <FinderContainer {...bindLogo()} key={getNumber()} left={posLogo.x} top={posLogo.y}>
+    <FinderContainer {...bindLogo()} key={getNumber()} left={posLogo.x} top={posLogo.y} style={{ touchAction: 'none' }}>
       <FinderSide>
         <FinderCloseBar onMouseMove={(e) => setCanMove(true)} onMouseLeave={(e) => setCanMove(false)} >
-          <FinderCircle color={"red"}><FinderIconButtonCircle src={button_red} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
+          <FinderCircle onMouseMove={(e) => setCanDelete(true)} onMouseLeave={(e) => setCanDelete(false)} color={"red"}><FinderIconButtonCircle src={button_red} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
           <FinderCircle color={"yellow"}><FinderIconButtonCircle src={button_yellow} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
           <FinderCircle color={"green"}><FinderIconButtonCircle src={button_green} alt="nenhum"></FinderIconButtonCircle> </FinderCircle>
         </FinderCloseBar>

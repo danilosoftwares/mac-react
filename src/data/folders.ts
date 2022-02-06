@@ -1,4 +1,6 @@
-export function loadList() {
+import { propsGroup } from "../store/types"
+
+export function loadList(): propsGroup[] {
   return [
     {
       "label": "Favorites",
@@ -16,6 +18,10 @@ export function loadList() {
             },
             {
               "label": "Fotos de Verão",
+              "icon": "png"
+            },
+            {
+              "label": "Marcio",
               "icon": "png"
             }
           ]
