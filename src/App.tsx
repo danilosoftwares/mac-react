@@ -19,18 +19,18 @@ function App() {
       <MenuMac data={menu} />
       <Desktop finders={listFinders ? listFinders : []}></Desktop>
       <Dock>
-        <DockItem onClick={() => dispatch(increment())} source="/dock/finder.png" ></DockItem>
+        <DockItem onClick={() => dispatch(increment())} source="/dock/Finder.png" ></DockItem>
         <DockItem source="/dock/Chrome.png" ></DockItem>
         <DockItem source="/dock/AppStore.png" ></DockItem>
         <DockItem source="/dock/Messages.png" ></DockItem>
         <DockItem source="/dock/maps.png" ></DockItem>
-        <DockItem source="/dock/contacts.png" ></DockItem>
+        <DockItem source="/dock/Contacts.png" ></DockItem>
         <DockItem source="/dock/email.png" ></DockItem>
-        <DockItem source="/dock/podcasts.png" ></DockItem>
+        <DockItem source="/dock/Podcasts.png" ></DockItem>
         <DockItem source="/dock/Reminders.png" ></DockItem>
-        <DockItem source="/dock/notes.png" ></DockItem>
+        <DockItem source="/dock/Notes.png" ></DockItem>
         <DockItem source="/dock/SystemPreferences.png" ></DockItem>
-        <DockItem source="/dock/bin.png" ></DockItem>
+        <DockItem source="/dock/Bin.png" ></DockItem>
       </Dock>
     </div>
   );
