@@ -9,7 +9,6 @@ import position_icon_files from './icons/position_icon_files.svg';
 import option_icon_files from './icons/option_icon_files.svg';
 import export_icon_files from './icons/export_icon_files.svg';
 import tag_icon_files from './icons/tag_icon_files.svg';
-import doble_arrow_files from './icons/doble_arrow_files.svg';
 import search_icon_files from './icons/search_icon_files.svg';
 
 interface propsHeader {

@@ -7,16 +7,26 @@ import { RootState } from "./store";
 import { useDispatch, useSelector } from 'react-redux';
 import { increment } from "./store/store";
 import { Desktop } from './components/Desktop';
+import { useEffect, useState } from 'react';
+import moment from 'moment/moment.js'
 
 function App() {
 
   const dispatch = useDispatch();
-  const listFinders = useSelector((state: RootState) => state.list)
+  const listFinders = useSelector((state: RootState) => state.list);
+  const [menuChanged, setMenuChanged] = useState(menu);
+
+  useEffect(()=>{
+    const newValue = {...menu};
+    newValue.right[4].label = moment().format('ddd MMM DD');    
+    newValue.right[5].label = moment().format('h:mm a');    
+    setMenuChanged(newValue);
+  },[]);
 
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
-      <MenuMac data={menu} />
+      <MenuMac data={menuChanged} />
       <Desktop finders={listFinders ? listFinders : []}></Desktop>
       <Dock>
         <DockItem onClick={() => dispatch(increment())} source="/dock/Finder.png" ></DockItem>

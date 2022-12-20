@@ -43,7 +43,7 @@ export const Finder: React.FC<propsFinder> = ({ id, left, top }) => {
   const [canMove, setCanMove] = useState(false);
   const [canDelete, setCanDelete] = useState(false);
   const [idx, setIDX] = useState(99999);
-  const [identificador, setIdentificador] = useState<number>(id);
+  const [identificador] = useState<number>(id);
   const dispatch = useDispatch();
 
   const bindLogo = useDrag((params) => {
