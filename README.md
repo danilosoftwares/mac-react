@@ -1,12 +1,16 @@
-# Replicando Mac Big Sur no React JS
+# Replicating Mac Big Sur in React JS
 
 ![](demonstracao.gif)
 
 [![npm](https://img.shields.io/badge/react-js-green)](https://www.npmjs.com/package/n) [![npm](https://img.shields.io/npm/l/n.svg?style=flat-square)](https://www.npmjs.com/package/n) 
 
-## *OBJETIVO :*
-O projeto tem como finalidade criar uma imagem do mac big sur, procurando replicar alguns recursos e imagens
-## *INSTALANDO*
+## *Objective:*
+The purpose of the project is to create an image of mac big sur, trying to replicate some features and images
+
+## *See live:*
+https://mac-react-five.vercel.app/
+
+## *Installing*
 
 ```sh
 git clone https://github.com/danilosoftwares/mac-react
