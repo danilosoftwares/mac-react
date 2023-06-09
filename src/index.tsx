@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import './fonts/FontsFree-Net-SFProText-Regular.ttf';
 import { Provider } from 'react-redux';
 import { store } from "./store"
+import { SplashScreen } from './components/SplashScreen';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <SplashScreen>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </SplashScreen>
   </React.StrictMode>,
   document.getElementById('root')
 );
